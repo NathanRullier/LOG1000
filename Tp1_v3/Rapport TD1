@@ -1,0 +1,419 @@
+E1.1
+a) 
+	commit e865b77ef46ae344c568f1fa86fb599eca08d554 (HEAD -> master, origin/master, 	origin/HEAD)
+	Author: Jonathan Bordeleau <jonathan.bordeleau@polymtl.ca>
+	Date:   Mon Jan 29 08:52:14 2018 -0500
+
+	    Premier commit, ajout ficher src
+
+	commit 1b2a6fdc629acea28d1672e5941d0912728eeb7f
+	Author: admin <gigl-technique@polymtl.ca>
+	Date:   Tue Sep 11 15:51:58 2012 -0400
+
+	    Commit administratif
+
+	commit 70996bca0add50159f527a3495c0e19d965081c1
+	Author: Luc Lalonde <Luc.Lalonde@polymtl.ca>
+	Date:   Tue Sep 11 15:31:01 2012 -0400
+
+ 	   Premier commit
+	
+b)
+	Tandis que la commande git log renvoie les informations par rapport aux differents commit, la commande git log -p, elle, affiche toutes les modifications apportees aux fichiers, le tout, dans une delicieuse couleur verte.
+	
+E1.2
+4 a)
+Sur la branche master
+Votre branche est à jour avec 'origin/master'.
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+	modifié :         HashMap.cpp
+	modifié :         HashMap.h
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+	../.swp
+	pari
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+
+4 b)
+Oui, car les fichiers ont ete modifies sans etre ajoutes au repertoire local
+
+7 a)
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (5/5), done.
+From https://githost.gi.polymtl.ca/git/log1000-36
+   9af84b0..b542613  master     -> origin/master
+Updating 9af84b0..b542613
+Fast-forward
+ src/HashMap.cpp | 2 --
+ src/HashMap.h   | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+ 
+ 7 b)
+ Git n'a pas detecte de conflit, puisque nous n'avions pas modifie les memes fichiers.
+ 
+ 7 c)
+ math007@ubuntu:~/Documents/log1000-36/src$ git log --graph --decorate --all --oneline
+* b542613 (HEAD -> master, origin/master, origin/HEAD) Deuxieme essais, modification de HashMap.cpp et de HashMap.h
+* 9af84b0 Modification de HashMap.cpp et HashMap.h
+* 655094a Modification de HashMap.cpp et HashMap.h
+* e865b77 Premier commit, ajout ficher src
+* 1b2a6fd Commit administratif
+* 70996bc Premier commit
+
+E1.3
+4 a)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   main.cpp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+4 b)
+
+5 a)
+Git push :
+
+Username for 'https://githost.gi.polymtl.ca': mamarbb
+Password for 'https://mamarbb@githost.gi.polymtl.ca': 
+To https://githost.gi.polymtl.ca/git/log1000-36/
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://githost.gi.polymtl.ca/git/log1000-36/'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Git fetch : 
+
+Username for 'https://githost.gi.polymtl.ca': mamarbb
+Password for 'https://mamarbb@githost.gi.polymtl.ca': 
+remote: Counting objects: 13, done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 7 (delta 4), reused 0 (delta 0)
+Unpacking objects: 100% (7/7), done.
+From https://githost.gi.polymtl.ca/git/log1000-36
+   dba2564..777036f  master     -> origin/master
+
+git git log --graph --decorate --all --oneline :
+
+math007@ubuntu:~/Documents/log1000-36$ git log --graph --decorate --all --oneline
+* d499914 (HEAD -> master) commentaire
+| * 777036f (origin/master, origin/HEAD) Modification du main.cpp, ajout de la fonction de lecture du fichier
+|/  
+* dba2564 Test
+
+b)Absolument, puisque le git n'a pas fonctionne, il va y avoir un conflit
+
+c)
+warning: Cannot merge binary files: Tp1_v3/src/pari (HEAD vs. refs/remotes/origin/master)
+Auto-merging Tp1_v3/src/pari
+CONFLICT (content): Merge conflict in Tp1_v3/src/pari
+Auto-merging Tp1_v3/src/main.cpp
+Auto-merging Rapport TD1
+Automatic merge failed; fix conflicts and then commit the result.
+
+d) 
+
+commit c8a6d742ac9dd7865fdad3638dc5333302125dc7
+Merge: 2a4359e 777036f
+Author: mathieu <mamarbb@polymtl.ca>
+Date:   Thu Feb 8 21:21:22 2018 -0500
+
+    resolution des conflits
+
+commit 2a4359e7fb839cf31f50480d4fdd0dd2b37cdd4b
+Author: mathieu <mamarbb@polymtl.ca>
+Date:   Thu Feb 8 21:17:23 2018 -0500
+
+    commit du rapport
+
+commit d4999144ea64f419d03eb078be663bcefd298482
+Author: mathieu <mamarbb@polymtl.ca>
+Date:   Thu Feb 8 21:09:23 2018 -0500
+
+    commentaire
+
+commit 777036f2e0d5a9d6ae15607d571fef8d9bb60a65
+Author: Jonathan Bordeleau <jonathan.bordeleau@polymtl.ca>
+Date:   Thu Feb 8 21:06:10 2018 -0500
+
+    Modification du main.cpp, ajout de la fonction de lecture du fichier
+E1.4
+
+5 a)
+
+Username for 'https://githost.gi.polymtl.ca': mamarbb
+Password for 'https://mamarbb@githost.gi.polymtl.ca': 
+remote: Counting objects: 11, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 6 (delta 5), reused 0 (delta 0)
+Unpacking objects: 100% (6/6), done.
+From https://githost.gi.polymtl.ca/git/log1000-36
+   66e1047..33fe5e0  master     -> origin/master
+Auto-merging Tp1_v3/src/main.cpp
+CONFLICT (content): Merge conflict in Tp1_v3/src/main.cpp
+Automatic merge failed; fix conflicts and then commit the result.
+
+7 
+a)
+math007@ubuntu:~/Documents/log1000-36$ git log --graph --decorate --all --oneline
+* 0b940c2 (HEAD -> master, origin/master, origin/HEAD, nouvelle-branch) texte sur ma branche.txt
+
+Git n'a pas detecter de conflit, il a tout simplement ajouter le fichier texte a la branche master.
+ 
+
+
+b)
+
+c)Le push s'est bien derouler, le log est bon sur gitk
+
+ath007@ubuntu:~/Documents/log1000-36$ git log -v
+commit 0b940c27a90a82ddd0f4b20522990ffae7a0ece7
+Author: mathieu <mamarbb@polymtl.ca>
+Date:   Thu Feb 8 22:17:47 2018 -0500
+
+    texte sur ma branche.txt
+
+commit 572f8a5701478f2c1ed25ed80297577d3054f7fd
+Author: mathieu <mamarbb@polymtl.ca>
+Date:   Thu Feb 8 21:57:39 2018 -0500
+
+E2.1 
+Configuration du makefile :
+
+all: depend de main.o HashMap.o SomeKeyHash.o
+
+main.o depend de main.cpp et Hashmap.h
+
+HashMap.o depend de HashMap.cpp et HashMap.h
+
+SomeKeyHash.o depend de SomeKeyHash.cpp et SomeKeyHash.h
+
+E2.2
+
+4)
+
+6)
+CC : defini le compilateur a utiliser (gcc ou g++ par exemple)
+CFLAGs : utile pour changer de compilateur (Compiler Flags)
+LDFRLAGS : sert a chercher les librairis (Linkers Flags)
+MAKE : 
+MALEDEPEND : 
+
+SRC : contient chemin pour le fichier c.c dans b.c/
+
+OBJ : Contient le chemin ou mettre les fichiers objet (*.o)
+
+.SUFFIXES : remplace SUFFIXES par .c lors de l'execution du makefile
+
+le signe $ est pour acceder a la variable entre parentheses. Par exemple, $(CC) va etre remplace par gcc. Le -c est pour la compilation en d'un .cpp ou .c en .o. Le symbole $< signifie le nom de la premiere dependance. 
+
+all: est l'endroit ou tous les fichiers .c seront compiles en .o
+
+Ensuite, dans monProgramme les fichiers .o seront mis ensemble pour former l'executable (.out) a l'aide du compilateur ($(CC)) et -o. $@ indique que le nom du fichier cible est $(LDFLAGS).
+
+clean : Decrit ce qu'il se passera lorsque la commande make clean sera execute. Le but de cette commande est de supprimer les fichier .o
+
+PARTIE 2
+E2.1
+Après le premier make, voici les dernières lignes de commande affichées à la console:
+/usr/bin/install: cannot create regular file '/usr/local/lib/libring.so.0.0.0': Permission denied
+Makefile:677: recipe for target 'install-libLTLIBRARIES' failed
+make[3]: * [install-libLTLIBRARIES] Error 1
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:1175: recipe for target 'install-am' failed
+make[2]: * [install-am] Error 2
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:1014: recipe for target 'install-recursive' failed
+make[1]: * [install-recursive] Error 1
+make[1]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:549: recipe for target 'install-recursive' failed
+make: * [install-recursive] Error 1
+Mathieu Marchand
+Mathieu
+
+Après le premier make install:
+Making install in media
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+Making install in audio
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+Making install in sound
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/sound'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/sound'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/sound'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/sound'
+Making install in alsa
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/alsa'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/alsa'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/alsa'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/alsa'
+Making install in pulseaudio
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/pulseaudio'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/pulseaudio'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/pulseaudio'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio/pulseaudio'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/audio'
+Making install in video
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+Making install in v4l2
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video/v4l2'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video/v4l2'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video/v4l2'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video/v4l2'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+make[5]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media/video'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/media'
+Making install in config
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/config'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/config'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/config'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/config'
+Making install in hooks
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/hooks'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/hooks'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/hooks'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/hooks'
+Making install in sip
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/sip'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/sip'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/sip'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/sip'
+Making install in upnp
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/upnp'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/upnp'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/upnp'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/upnp'
+Making install in security
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/security'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/security'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/security'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/security'
+Making install in ringdht
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+Making install in eth/libdevcore
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcore'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcore'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcore'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcore'
+Making install in eth/libdevcrypto
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcrypto'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcrypto'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcrypto'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht/eth/libdevcrypto'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+make[4]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/ringdht'
+Making install in im
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/im'
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/im'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/im'
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src/im'
+make[2]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+  CXX      libring_la-buildinfo.lo
+r  CXXLD    libring.la
+make[3]: Entering directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+  CXX      libring_la-buildinfo.lo
+  CXXLD    libring.la
+ /bin/mkdir -p '/usr/local/lib'
+ ../doltlibtool   --mode=install /usr/bin/install -c   libring.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libring.so.0.0.0 /usr/local/lib/libring.so.0.0.0
+/usr/bin/install: cannot create regular file '/usr/local/lib/libring.so.0.0.0': Permission denied
+Makefile:677: recipe for target 'install-libLTLIBRARIES' failed
+make[3]: * [install-libLTLIBRARIES] Error 1
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:1175: recipe for target 'install-am' failed
+make[2]: * [install-am] Error 2
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:1014: recipe for target 'install-recursive' failed
+make[1]: * [install-recursive] Error 1
+make[1]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:549: recipe for target 'install-recursive' failed
+make: * [install-recursive] Error 1
+
+Time make:
+time make : 
+real	0m16.100s
+user	0m10.299s
+sys	0m2.608s
+
+Après avoir changé le callIDSet_ pour callIDSet1_, le time make donne:
+Makefile:859: recipe for target 'libring_la-account.lo' failed
+make[3]: * [libring_la-account.lo] Error 1
+make[3]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:1014: recipe for target 'all-recursive' failed
+make[2]: * [all-recursive] Error 1
+make[2]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon/src'
+Makefile:549: recipe for target 'all-recursive' failed
+make[1]: * [all-recursive] Error 1
+make[1]: Leaving directory '/home/math007/Documents/log1000-TP1-P2/ring-daemon'
+Makefile:480: recipe for target 'all' failed
+make: * [all] Error 2
+
+real	0m7.764s
+user	0m5.537s
+sys	0m0.692s
+
+Les temps d'execution sont plus court pour le deuxième time make, après avoir effectué la modification dans le fichier .cpp. Cela peut-être du au fait que le fichier ne compile pas correctement, et que le make prend donc moins de temps avant de s'arrêter. Puisque les 2 make n'ont pas fonctionné, il est difficile de réellement savoir la cause de cette différence étant donné que nous ne pouvons nous baser sur un résultat qui fonctionne.
+
+
+
+
+
